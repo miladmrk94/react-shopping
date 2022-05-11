@@ -1,8 +1,11 @@
 import React from "react";
 import { NavLink, withRouter } from "react-router-dom";
+import { useProduct } from "../Context/Context";
 import styles from "./Navigation.module.scss";
 
 const Navigation = () => {
+  const products = useProduct();
+  const { cart } = products;
   return (
     <nav className={styles.navBox}>
       <ul>
@@ -13,7 +16,12 @@ const Navigation = () => {
         </li>
         <li>
           <NavLink to="/cart" activeClassName={styles.active}>
-            cart
+            cart{" "}
+            <h3 style={{ color: "blueviolet", display: "inline-block" }}>
+              {cart.reduce(function (accumulator, currentValue) {
+                return accumulator + currentValue;
+              })}
+            </h3>
           </NavLink>
         </li>
       </ul>
