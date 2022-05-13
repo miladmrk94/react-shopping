@@ -18,9 +18,9 @@ const Navigation = () => {
           <NavLink to="/cart" activeClassName={styles.active}>
             cart{" "}
             <h3 style={{ color: "blueviolet", display: "inline-block" }}>
-              {cart.reduce(function (accumulator, currentValue) {
-                return accumulator + currentValue;
-              })}
+              {cart.reduce((total, item) => {
+                return total + item.quantity;
+              }, null)}
             </h3>
           </NavLink>
         </li>

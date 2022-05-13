@@ -15,21 +15,18 @@ const Context = ({ children }) => {
       case "getProduct":
         const product = action.payload;
 
-        const updatedProduct = [...state.cart];
-        const index = updatedProduct.findIndex((i) => {
-          return i.id === product.id;
+        const cartClone = [...state.cart];
+        const index = cartClone.findIndex((item) => {
+          return item.id === product.id;
         });
-
         if (index < 0) {
-          updatedProduct.push({ ...product, quantity: 1 });
+          cartClone.push({ ...product, quantity: 1 });
         } else {
-          const myProduct = { ...updatedProduct[index] };
+          const myProduct = { ...cartClone[index] };
           myProduct.quantity++;
-          updatedProduct[index] = myProduct;
+          cartClone[index] = myProduct;
         }
-        return { ...state, cart: updatedProduct };
-
-        console.log(product);
+        return { ...state, cart: cartClone };
 
       default:
         return state;
