@@ -4,7 +4,7 @@ import styles from "../styles/CartPage.module.scss";
 const Cart = () => {
   const products = useProduct();
   const dispatch = useProductAction();
-  const { cart, total } = products;
+  const { cart } = products;
   console.log(cart);
 
   const plusHandler = (id) => {
@@ -27,7 +27,17 @@ const Cart = () => {
     } else {
       return (
         <div className={styles.container}>
-          <section className={styles.total}>Total</section>
+          <section className={styles.total}>
+            <h3>
+              {" "}
+              Total :{" "}
+              {cart.reduce((total, item) => {
+                const price = item.price * item.quantity;
+                return total + price;
+              }, 0)}{" "}
+              $
+            </h3>
+          </section>
           <section className={styles.details}>
             {cart.map((item) => {
               return (

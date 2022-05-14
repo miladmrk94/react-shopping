@@ -7,7 +7,6 @@ const productDispatcher = React.createContext();
 const Context = ({ children }) => {
   const initialState = {
     cart: [],
-    total: 0,
   };
 
   const reducer = (state, action) => {

@@ -1,12 +1,18 @@
 import React from "react";
 import * as data from "../data";
 import styles from "../styles/HomePage.module.scss";
-import { useProductAction } from "../Components/Context/Context";
+import { useProductAction, useProduct } from "../Components/Context/Context";
 import toast, { Toaster } from "react-hot-toast";
 
 const HomePage = () => {
   const dispatch = useProductAction();
+  const { cart } = useProduct();
 
+  const checkInCart = (cart, products) => {
+    return cart.find((i) => {
+      return i.id === products.id;
+    });
+  };
   const clickHandler = (item) => {
     dispatch({ type: "getProduct", payload: item });
     toast.success("Added to cart");
@@ -24,7 +30,9 @@ const HomePage = () => {
               <div className={styles.productTitles}>
                 <p>{item.name}</p>
                 <p>$ {item.price}</p>
-                <button onClick={() => clickHandler(item)}>Add To Cart</button>
+                <button onClick={() => clickHandler(item)}>
+                  {checkInCart(cart, item) ? "In cart" : "Add To Cart"}
+                </button>
                 <Toaster />
               </div>
             </section>
