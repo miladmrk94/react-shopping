@@ -28,13 +28,50 @@ const Context = ({ children }) => {
         }
         return { ...state, cart: cartClone };
 
+      case "plusProduct": {
+        const id = action.id;
+        const cartClone = [...state.cart];
+        const index = cartClone.findIndex((i) => {
+          return i.id === id;
+        });
+        const myProduct = { ...cartClone[index] };
+        myProduct.quantity++;
+        cartClone[index] = myProduct;
+        return { ...state, cart: cartClone };
+      }
+
+      case "minusProduct": {
+        const id = action.id;
+        const cartClone = [...state.cart];
+        const index = cartClone.findIndex((i) => {
+          return i.id === id;
+        });
+        const myProduct = { ...cartClone[index] };
+        if (myProduct.quantity <= 1) {
+          const deleteProduct = state.cart.filter((i) => {
+            return i.id !== id;
+          });
+          return { ...state, cart: deleteProduct };
+        } else {
+          myProduct.quantity--;
+          cartClone[index] = myProduct;
+          return { ...state, cart: cartClone };
+        }
+      }
+      case "deleteProduct": {
+        const id = action.id;
+        const deleteProduct = state.cart.filter((i) => {
+          return i.id !== id;
+        });
+        console.log(deleteProduct);
+        return { ...state, cart: deleteProduct };
+      }
       default:
         return state;
     }
   };
   const [product, dispatch] = useReducer(reducer, initialState);
 
-  console.log(product);
   return (
     <productContext.Provider value={product}>
       <productDispatcher.Provider value={dispatch}>
