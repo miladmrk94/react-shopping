@@ -15,7 +15,7 @@ const HomePage = () => {
   };
   const clickHandler = (item) => {
     dispatch({ type: "getProduct", payload: item });
-    toast.success("Added to cart");
+    toast.success(`${item.name} Added to cart`);
   };
 
   return (

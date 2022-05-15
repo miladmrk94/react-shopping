@@ -4,9 +4,29 @@
   flex-wrap: wrap-reverse;
   margin: 2rem;
   .total {
+    border-radius: 1rem;
+    margin-top: 0.5rem;
     min-width: 200px;
     flex:  1 1 30%;
-    background-color: aquamarine;
+    background-color: rgb(184, 184, 184);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h4{
+      margin: 0.2rem;
+    }
+    .discount{
+      border-bottom: 1px solid gray;
+    }
+    .checkOut{
+      margin: 1rem;
+      width: 80%;
+      height: 45px;
+      background-color: aqua;
+      &:active{
+        background-color: rgb(43, 187, 187);
+      }
+    }
   }
   .details {
     flex:  1 1 60%;
@@ -59,7 +79,7 @@ padding: 1rem;
         }
       }
       .productTitles {
-        min-width: 250px;
+        min-width: 350px;
 
         display: flex;
         justify-content: space-between;
@@ -68,6 +88,16 @@ padding: 1rem;
         margin: 1rem;
         p{
           font-size: 23px;
+        }
+        .price{
+          color: yellow;
+        }
+        .discount{
+          color: rgb(87, 253, 156);
+          
+        }
+        .offPrice{
+          color: rgb(9, 114, 74);
         }
       }
     }

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useProduct, useProductAction } from "../Components/Context/Context";
 import styles from "../styles/CartPage.module.scss";
 const Cart = () => {
@@ -7,6 +8,7 @@ const Cart = () => {
   const { cart } = products;
   console.log(cart);
 
+  // ----- product Btn handler
   const plusHandler = (id) => {
     dispatch({ type: "plusProduct", id: id });
   };
@@ -17,6 +19,18 @@ const Cart = () => {
   const deleteHandler = (id) => {
     dispatch({ type: "deleteProduct", id: id });
   };
+
+  //----- handel total price and offPrice
+  const totalPrice = cart.reduce((total, item) => {
+    const price = item.price * item.quantity;
+    return total + price;
+  }, 0);
+  const totalOffPrice = cart.reduce((total, item) => {
+    const price = item.offPrice * item.quantity;
+    return total + price;
+  }, 0);
+
+  // ----- handle cart ( Empty or Exist)
   const cartHandler = (cart) => {
     if (!cart.length) {
       return (
@@ -28,15 +42,15 @@ const Cart = () => {
       return (
         <div className={styles.container}>
           <section className={styles.total}>
-            <h3>
-              {" "}
-              Total :{" "}
-              {cart.reduce((total, item) => {
-                const price = item.price * item.quantity;
-                return total + price;
-              }, 0)}{" "}
-              $
-            </h3>
+            <h2>Cart Summery</h2>
+            <h4>Total Price : {totalPrice} $</h4>
+            <h4 className={styles.discount}>
+              Total Discount :{totalPrice - totalOffPrice} $
+            </h4>
+            <h4>Total Net : {totalOffPrice} $</h4>
+            <Link to="/checkOut">
+              <button className={styles.checkOut}>Check Out</button>
+            </Link>
           </section>
           <section className={styles.details}>
             {cart.map((item) => {
@@ -44,7 +58,18 @@ const Cart = () => {
                 <div className={styles.product} key={item.id}>
                   <div className={styles.productTitles}>
                     <p>{item.name}</p>
-                    <p>$ {item.price * item.quantity}</p>
+                    <p className={styles.price}>
+                      $ {item.price * item.quantity}
+                    </p>
+                    <p className={styles.discount}>
+                      {" "}
+                      {item.discount ? `off:${item.discount}%` : null}
+                    </p>
+                    <p className={styles.offPrice}>
+                      {item.discount
+                        ? `$ ${item.offPrice * item.quantity}`
+                        : null}
+                    </p>
                   </div>
                   <div className={styles.productControl}>
                     <div className={styles.quantityControl}>
@@ -71,6 +96,7 @@ const Cart = () => {
     }
   };
 
+  //----- Main return Component CartPage
   return cartHandler(cart);
 };
 
