@@ -48,7 +48,7 @@ const Cart = () => {
               Total Discount :{totalPrice - totalOffPrice} $
             </h4>
             <h4>Total Net : {totalOffPrice} $</h4>
-            <Link to="/checkOut">
+            <Link to="/signup?redirect=checkOut">
               <button className={styles.checkOut}>Check Out</button>
             </Link>
           </section>
