@@ -2,8 +2,8 @@ import React from "react";
 import * as data from "../data";
 import styles from "../styles/HomePage.module.scss";
 import { useProductAction, useProduct } from "../Components/Context/Context";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const dispatch = useProductAction();
@@ -33,27 +33,11 @@ const HomePage = () => {
         {data.products.map((item) => {
           return (
             <section key={item.name} className={styles.product}>
-              <div className={styles.productImage}>
-                <img src={item.image} alt={item.name} />
-              </div>
-              <div className={styles.productTitles}>
-                <p>{item.name}</p>
-                <p>$ {item.price}</p>
-                <button onClick={() => clickHandler(item)}>
-                  {checkInCart(cart, item) ? "In cart" : "Add To Cart"}
-                </button>
-                <ToastContainer
-                  position="top-center"
-                  autoClose={300}
-                  hideProgressBar
-                  newestOnTop
-                  closeOnClick
-                  rtl={false}
-                  pauseOnFocusLoss
-                  draggable
-                  pauseOnHover={false}
-                />
-              </div>
+              <Link to={{ pathname: `/product/${item.name}`, state: { item } }}>
+                <div className={styles.productImage}>
+                  <img src={item.image} alt={item.name} />
+                </div>
+              </Link>
             </section>
           );
         })}
@@ -63,3 +47,29 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+{
+  /* <section key={item.name} className={styles.product}>
+<div className={styles.productImage}>
+  <img src={item.image} alt={item.name} />
+</div>
+<div className={styles.productTitles}>
+  <p>{item.name}</p>
+  <p>$ {item.price}</p>
+  <button onClick={() => clickHandler(item)}>
+    {checkInCart(cart, item) ? "In cart" : "Add To Cart"}
+  </button>
+  <ToastContainer
+    position="top-center"
+    autoClose={300}
+    hideProgressBar
+    newestOnTop
+    closeOnClick
+    rtl={false}
+    pauseOnFocusLoss
+    draggable
+    pauseOnHover={false}
+  />
+</div>
+</section> */
+}
