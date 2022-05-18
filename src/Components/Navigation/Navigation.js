@@ -1,29 +1,47 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import { useAuth } from "../Context/AuthProvider";
 import { useProduct } from "../Context/Context";
 import styles from "./Navigation.module.scss";
+import {
+  RiHomeSmileLine,
+  RiShoppingCartLine,
+  RiUserSharedLine,
+  RiUserSettingsLine,
+} from "react-icons/ri";
 
 const Navigation = () => {
   const auth = useAuth();
   const products = useProduct();
   const { cart } = products;
+
+  let bajColor = cart.reduce((total, item) => {
+    return total + item.quantity;
+  }, null);
+
+  const [baj, setBaj] = useState(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setBaj(bajColor);
+    }, 500);
+    console.log(bajColor);
+    return () => {
+      clearTimeout();
+    };
+  }, [bajColor]);
+
   return (
     <nav className={styles.navBox}>
       <ul>
         <li>
           <NavLink to="/" activeClassName={styles.active} exact={true}>
-            Home
+            <RiHomeSmileLine />
           </NavLink>
         </li>
         <li>
           <NavLink to="/cart" activeClassName={styles.active}>
-            cart{" "}
-            <h3 style={{ color: "blueviolet", display: "inline-block" }}>
-              {cart.reduce((total, item) => {
-                return total + item.quantity;
-              }, null)}
-            </h3>
+            <RiShoppingCartLine />
           </NavLink>
         </li>
 
@@ -33,9 +51,12 @@ const Navigation = () => {
             activeClassName={styles.active}
             exact={true}
           >
-            {auth ? "profile" : "Login"}
+            {auth ? <RiUserSettingsLine /> : <RiUserSharedLine />}
           </NavLink>
         </li>
+        <p className={bajColor > baj ? `${styles.bajAction}` : null}>
+          {bajColor}
+        </p>
       </ul>
     </nav>
   );

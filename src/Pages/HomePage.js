@@ -2,7 +2,8 @@ import React from "react";
 import * as data from "../data";
 import styles from "../styles/HomePage.module.scss";
 import { useProductAction, useProduct } from "../Components/Context/Context";
-import toast, { Toaster } from "react-hot-toast";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const HomePage = () => {
   const dispatch = useProductAction();
@@ -15,7 +16,15 @@ const HomePage = () => {
   };
   const clickHandler = (item) => {
     dispatch({ type: "getProduct", payload: item });
-    toast.success(`${item.name} Added to cart`);
+    toast.success(item.name, {
+      position: "top-center",
+      autoClose: 300,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   return (
@@ -33,7 +42,17 @@ const HomePage = () => {
                 <button onClick={() => clickHandler(item)}>
                   {checkInCart(cart, item) ? "In cart" : "Add To Cart"}
                 </button>
-                <Toaster />
+                <ToastContainer
+                  position="top-center"
+                  autoClose={300}
+                  hideProgressBar
+                  newestOnTop
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover={false}
+                />
               </div>
             </section>
           );

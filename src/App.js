@@ -11,6 +11,7 @@ import LoginPage from "./Pages/LoginPage";
 import SignupPage from "./Pages/SignupPage";
 import ProfilePage from "./Pages/ProfilePage";
 import AuthProvider from "./Components/Context/AuthProvider";
+import ProductPage from "./Pages/ProductPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Context>
           <Layout>
             <Switch>
+              <Route path="/product" component={ProductPage} />
               <Route path="/checkOut" component={CheckOutPage} />
               <Route path="/profile" component={ProfilePage} />
               <Route path="/login" component={LoginPage} />

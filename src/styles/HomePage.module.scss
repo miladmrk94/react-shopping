@@ -1,12 +1,12 @@
 .home{
-    background-color: antiquewhite;
+    background-color: rgb(235, 240, 243);
     padding: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .productList{
-    background-color: antiquewhite;
+    background-color: rgb(241, 242, 243);
     display: flex;
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
@@ -15,14 +15,15 @@
     max-width: 1170px;
     width: 90vw;
     .product{
-        background-color: rgb(255, 133, 102);
-        border-radius: 1rem;
+        background-color: rgb(255, 255, 255);
+        border-radius: 0.3rem;
         text-align: center;
+        border: 1px solid rgb(49, 49, 49);
 
         .productImage img{
             width: 100%;
             height: auto;
-            border-radius: 1rem;
+            border-radius: 0.3rem;
         }
         .productTitles {
             display: flex;

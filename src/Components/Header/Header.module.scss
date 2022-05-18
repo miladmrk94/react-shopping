@@ -1,8 +1,15 @@
 .headerBox {
-    background-color: rgb(85, 192, 156);
+    background-color: rgb(241, 242, 243);
+    border-bottom: 10px solid #ffffff;
     display: flex;
-    justify-content: space-around;
-    height: 60px;
+    justify-content: space-between;
+    height: 120px;
     align-items: center;
-    
+    padding: 0 3rem;
+    .image{
+        display: flex;
+        img {
+          max-width: 100px;
+        }
+    }
 }
