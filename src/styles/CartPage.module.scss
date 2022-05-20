@@ -1,105 +1,25 @@
-.container {
+.box {
   display: flex;
-  justify-content: right;
-  flex-wrap: wrap-reverse;
-  margin: 2rem;
+  flex-wrap: wrap;
+  background-color:#f1f2f3;
+  height: 100%;
+  justify-content: center;
+  gap: 1rem;
   .total {
-    border-radius: 1rem;
-    margin-top: 0.5rem;
-    min-width: 200px;
-    flex:  1 1 30%;
-    background-color: rgb(241, 242, 243);
+    order: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  .container {
+    padding:0 1rem;
+    flex-grow: 21;
+    font-family: "Work Sans", sans-serif;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    h4{
-      margin: 0.2rem;
-    }
-    .discount{
-      border-bottom: 1px solid gray;
-    }
-    .checkOut{
-      margin: 1rem;
-      width: 80%;
-      height: 45px;
-      background-color: aqua;
-      &:active{
-        background-color: rgb(43, 187, 187);
-      }
-    }
+    justify-content: center;
+    
+  
+   
   }
-  .details {
-    flex:  1 1 60%;
-    background-color: rgb(255, 255, 255);
-    display: flex;
-    flex-direction: column;
-    .product {
-      background-color: rgb(161, 141, 196);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap-reverse;
-      margin: 0.5rem;
-      border-radius: 1rem;
-padding: 1rem;
-      
-
-      .productImage {
-        border-radius: 1rem;
-        display: flex;
-        justify-content: right;
-        img {
-          border-radius: 1rem;
-          margin: 1rem;
-          max-width: 100px;
-        }
-      }
-      .productControl {
-        min-width: 150px;
-
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        button{          padding: 0.6rem;
-        }
-        .deleteBtn{
-          padding: 0.6rem;
-          margin-left: 1rem;
-          
-        }
-        
-        .quantityControl{
-          display: flex;
-          align-items: center;
-          width: 100px;
-          min-width: 80px;
-
-          justify-content: space-between;
-
-        }
-      }
-      .productTitles {
-        min-width: 350px;
-
-        display: flex;
-        justify-content: space-between;
-        font-size: medium;
-        font-weight: bold;
-        margin: 1rem;
-        p{
-          font-size: 23px;
-        }
-        .price{
-          color: yellow;
-        }
-        .discount{
-          color: rgb(87, 253, 156);
-          
-        }
-        .offPrice{
-          color: rgb(9, 114, 74);
-        }
-      }
-    }
-  }
+  
 }

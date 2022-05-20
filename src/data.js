@@ -5,8 +5,8 @@ export const products = [
     id: 1,
     name: "Chuck 70 Vintage Canvas",
     type: "shoes",
+    feat: "DESCRIPTION AND FEATURES",
     description: [
-      { feat: "DESCRIPTION AND FEATURES" },
       { title: "Vintage star ankle patch and license plate" },
       { title: "Archive-inspired, glossy egret midsole" },
       { title: "Ortholite insole cushioning" },
@@ -20,8 +20,8 @@ export const products = [
     id: 2,
     name: "Chuck Taylor All Star Washed Canvas",
     type: "shoes",
+    feat: "DESCRIPTION AND FEATURES",
     description: [
-      { feat: "DESCRIPTION AND FEATURES" },
       { title: "High-top sneaker with canvas upper" },
       { title: "AOrthoLite cushioning for all-day comfort" },
       { title: "Recycled mesh lining for breathability" },
@@ -35,8 +35,9 @@ export const products = [
     id: 3,
     name: "Chuck 70 Sunny-Floral",
     type: "shoes",
+    feat: "DESCRIPTION AND FEATURES",
+
     description: [
-      { feat: "DESCRIPTION AND FEATURES" },
       { title: "Unity wordmark is a meaningful design update" },
       { title: "Pop-color vintage star ankle patch" },
       { title: "Winged tongue stitching helps keep it in place" },
@@ -50,8 +51,9 @@ export const products = [
     id: 4,
     name: "Chuck 70 Sunny Floral",
     type: "shoes",
+    feat: "DESCRIPTION AND FEATURES",
+
     description: [
-      { feat: "DESCRIPTION AND FEATURES" },
       { title: "Sun wordmark is a meaningful design update" },
       { title: "Vintage license plate" },
       { title: "OrthoLite insole helps keep it comfortable" },
@@ -65,8 +67,9 @@ export const products = [
     id: 5,
     name: "Chuck 70 Crafted Patchwork",
     type: "shoes",
+    feat: "DESCRIPTION AND FEATURES",
+
     description: [
-      { feat: "DESCRIPTION AND FEATURES" },
       { title: "High-top with premium canvas upper" },
       { title: "OrthoLite sockliner for all-day comfort" },
       { title: "Archive-inspired, glossy egret midsole" },
@@ -80,8 +83,9 @@ export const products = [
     id: 6,
     name: "Chuck 70 '90s Marbled",
     type: "shoes",
+    feat: "DESCRIPTION AND FEATURES",
+
     description: [
-      { feat: "DESCRIPTION AND FEATURES" },
       { title: "High-top, premium shoe with 100% recycled polyester upper" },
       { title: "Bold, all-over print inspired by paper marbling" },
       { title: "Rubber heel plate ties in '70s heritage" },
@@ -95,8 +99,9 @@ export const products = [
     id: 7,
     name: "LEFT CHEST LOGO",
     type: "t-shirt",
+    feat: "DESCRIPTION AND FEATURES",
+
     description: [
-      { feat: "DESCRIPTION AND FEATURES" },
       {
         title:
           "The Left Chest Logo T-Shirt is a 100% carded ringspun cotton t-shirt with simple graphics at the left chest. Cut: classic.",
@@ -112,8 +117,9 @@ export const products = [
     id: 8,
     name: "LEFT CHEST LOGO TEE",
     type: "t-shirt",
+    feat: "DESCRIPTION AND FEATURES",
+
     description: [
-      { feat: "DESCRIPTION AND FEATURES" },
       {
         title:
           "The Left Chest Logo T-Shirt is a 100% carded ringspun cotton t-shirt with simple graphics at the left chest. Cut: classic.",
@@ -129,8 +135,9 @@ export const products = [
     id: 9,
     name: "BANDANA PAISLEY",
     type: "t-shirt",
+    feat: "DESCRIPTION AND FEATURES",
+
     description: [
-      { feat: "DESCRIPTION AND FEATURES" },
       {
         title:
           "The Left Chest Logo T-Shirt is a 100% carded ringspun cotton t-shirt with simple graphics at the left chest. Cut: classic.",
@@ -146,8 +153,9 @@ export const products = [
     id: 10,
     name: "CLASSIC PRINT BOX",
     type: "t-shirt",
+    feat: "DESCRIPTION AND FEATURES",
+
     description: [
-      { feat: "DESCRIPTION AND FEATURES" },
       {
         title:
           "The Left Chest Logo T-Shirt is a 100% carded ringspun cotton t-shirt with simple graphics at the left chest. Cut: classic.",
@@ -163,8 +171,9 @@ export const products = [
     id: 11,
     name: "VINTAGE PEACE OF MIND",
     type: "t-shirt",
+    feat: "DESCRIPTION AND FEATURES",
+
     description: [
-      { feat: "DESCRIPTION AND FEATURES" },
       {
         title:
           "The Left Chest Logo T-Shirt is a 100% carded ringspun cotton t-shirt with simple graphics at the left chest. Cut: classic.",
@@ -180,8 +189,9 @@ export const products = [
     id: 12,
     name: "WOVEN PATCH POCKET",
     type: "t-shirt",
+    feat: "DESCRIPTION AND FEATURES",
+
     description: [
-      { feat: "DESCRIPTION AND FEATURES" },
       {
         title:
           "The Left Chest Logo T-Shirt is a 100% carded ringspun cotton t-shirt with simple graphics at the left chest. Cut: classic.",

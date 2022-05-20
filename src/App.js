@@ -20,7 +20,7 @@ function App() {
         <Context>
           <Layout>
             <Switch>
-              <Route path="/product" component={ProductPage} />
+              <Route path="/product/:id" component={ProductPage} />
               <Route path="/checkOut" component={CheckOutPage} />
               <Route path="/profile" component={ProfilePage} />
               <Route path="/login" component={LoginPage} />

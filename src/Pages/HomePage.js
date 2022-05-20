@@ -16,15 +16,6 @@ const HomePage = () => {
   };
   const clickHandler = (item) => {
     dispatch({ type: "getProduct", payload: item });
-    toast.success(item.name, {
-      position: "top-center",
-      autoClose: 300,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-    });
   };
 
   return (
@@ -36,6 +27,9 @@ const HomePage = () => {
               <Link to={{ pathname: `/product/${item.name}`, state: { item } }}>
                 <div className={styles.productImage}>
                   <img src={item.image} alt={item.name} />
+                  <div className={styles.name}>
+                    <p>{item.name}</p>
+                  </div>
                 </div>
               </Link>
             </section>

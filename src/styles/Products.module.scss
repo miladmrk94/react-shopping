@@ -1,0 +1,145 @@
+@media screen and(max-width: 510px) {
+    .details {
+      flex-direction: column;
+      .titles {
+        font-size: 13px;
+        p {
+          display: none;
+        }
+      }
+    }
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 200px;
+  
+    border-bottom: solid 2px rgb(197, 197, 197);
+    .details {
+      display: flex;
+      align-items: center;
+      .images {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .img_product {
+          width: 140px;
+          height: auto;
+          position: relative;
+          z-index: 2;
+          border: 1px solid black;
+          background-size: contain;
+          border-radius: 0.3rem;
+
+        }
+      }
+      .titles {
+        margin: 0 1rem 0rem 1rem;
+        height: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-evenly;
+        .discountBox{
+          display: flex;
+          align-items: center;
+          .priceTwo {
+            color: rgb(150, 148, 148);
+            text-decoration: line-through;
+          }
+          .discount{
+            color: green;
+            margin-left: 1rem;
+  
+          }
+        }
+       
+
+      }
+    }
+  
+    .price {
+      color: rgb(61, 61, 61);
+      margin: 0 1rem 0rem 0rem;
+      font-size: 14px;
+    }
+    .buttons {
+      display: flex;
+      align-items: center;
+      font-family: "Comfortaa", cursive;
+      color: rgb(51, 51, 51);
+  
+      .quantity {
+        font-family: "Work Sans", sans-serif;
+        font-size: 19px;
+      }
+  
+      .add {
+        border: none;
+        transition: all 0.1s;
+  
+        &:active {
+          color: rgb(28, 138, 28);
+          transition: all 0.2s;
+          font-size: large;
+        }
+      }
+      .minus {
+        border: none;
+        transition: all 0.1s;
+  
+        &:active {
+          color: rgb(218, 69, 69);
+          transition: all 0.2s;
+          font-size: large;
+        }
+      }
+      .deleted {
+        border: none;
+        transition: all 0.1s;
+  
+        &:active {
+          color: rgb(218, 69, 69);
+          transition: all 0.2s;
+          font-size: large;
+        }
+      }
+      .quantityCounter {
+        padding: 0.2rem;
+        background-color: rgb(250, 250, 250);
+        height: 80px;
+        width: 45px;
+        margin: 0.2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
+          rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+          rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+        border-radius: 0.2rem;
+      }
+      .deleteProduct {
+        padding: 0.2rem;
+        background-color: rgb(250, 250, 250);
+        height: 80px;
+        width: 45px;
+        margin: 0.2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 40px;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
+          rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+          rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+        border-radius: 0.2rem;
+        animation-name: example;
+      }
+    }
+  }
+  

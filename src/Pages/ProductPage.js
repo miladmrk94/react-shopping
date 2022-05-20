@@ -1,16 +1,156 @@
 import React from "react";
 import styles from "../styles/ProductPage.module.scss";
-const ProductPage = () => {
+import { useProductAction, useProduct } from "./../Components/Context/Context";
+import { ToastContainer, toast } from "react-toastify";
+import { Link } from "react-router-dom";
+import Slider from "../Components/Slider";
+
+const ProductPage = ({ location }) => {
+  const dispatch = useProductAction();
+  const { cart } = useProduct();
+
+  const checkInCart = (cart, products) => {
+    return cart.find((i) => {
+      return i.id === products.id;
+    });
+  };
+  const clickHandler = (item) => {
+    dispatch({ type: "getProduct", payload: item });
+    toast.success(item.name, {
+      position: "top-center",
+      autoClose: 300,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
+  const data = [location.state.item];
+  console.log(data);
   return (
     <div className={styles.container}>
-      <section className={styles.cart}>
-        <div className={styles.image}>
-          <img src="https://s6.uupload.ir/files/01_mgms.jpg" alt="image" />
-        </div>
-        <div className={styles.content}>
-          <p>asdajkldashjasldhkalsd</p>
-        </div>
-      </section>
+      {data.map((item) => {
+        return (
+          <section key={item.id} className={styles.cart}>
+            <div className={styles.image}>
+              {/* <img src={item.image} alt={item.name} /> */}
+              <Slider image={item.image} className={styles.img} />
+            </div>
+            <div className={styles.content}>
+              <div className={styles.boxOne}>
+                <p className={styles.name}>{item.name}</p>
+                <p className={styles.price}>${item.price}</p>
+                <p className={styles.offPrice}>${item.offPrice}</p>
+                <p className={styles.discount}>${item.discount} save!</p>
+              </div>
+              {item.type === "shoes" ? (
+                <div className={styles.boxOne}>
+                  <p className={styles.size}>Size:</p>
+                  <input
+                    className={styles.radio}
+                    type="radio"
+                    id="37"
+                    name="selector"
+                  />
+                  <label for="37">37</label>
+                  <input
+                    className={styles.radio}
+                    type="radio"
+                    id="38"
+                    name="selector"
+                  />
+                  <label for="38">38</label>
+                  <input
+                    className={styles.radio}
+                    type="radio"
+                    id="39"
+                    name="selector"
+                  />
+                  <label for="39">39</label>
+                  <input
+                    className={styles.radio}
+                    type="radio"
+                    id="40"
+                    name="selector"
+                  />
+                  <label for="40">40</label>
+                  <input
+                    className={styles.radio}
+                    type="radio"
+                    id="41"
+                    name="selector"
+                  />
+                  <label for="41">41</label>
+                  <input
+                    className={styles.radio}
+                    type="radio"
+                    id="42"
+                    name="selector"
+                  />
+                  <label for="42">42</label>
+                </div>
+              ) : (
+                <div className={styles.boxOne}>
+                  <p className={styles.size}>Size:</p>
+                  <input
+                    className={styles.radio}
+                    type="radio"
+                    id="S"
+                    name="selector"
+                  />
+                  <label for="S">S</label>
+                  <input
+                    className={styles.radio}
+                    type="radio"
+                    id="M"
+                    name="selector"
+                  />
+                  <label for="M">M</label>
+                  <input
+                    className={styles.radio}
+                    type="radio"
+                    id="L"
+                    name="selector"
+                  />
+                  <label for="L">L</label>
+                </div>
+              )}
+
+              <div className={styles.boxOne}>
+                <h2>{item.feat}</h2>
+
+                {item.description.map((i, index) => {
+                  return (
+                    <div key={index} className={styles.boxTwo}>
+                      <ul>
+                        <li style={{ listStyleType: "disc" }}>
+                          <p>{i.title}</p>
+                        </li>
+                      </ul>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className={styles.boxBtn}>
+                <Link to="/cart" className={styles.link}>
+                  <button className={styles.btn}>Go To Cart</button>
+                </Link>
+
+                <button
+                  className={styles.btnInCart}
+                  onClick={() => clickHandler(item)}
+                >
+                  {checkInCart(cart, item) ? "In cart" : "Add To Cart"}
+                </button>
+              </div>
+              <ToastContainer />
+            </div>
+          </section>
+        );
+      })}
     </div>
   );
 };
