@@ -1,11 +1,56 @@
-@media screen and(max-width: 510px) {
+@media screen and(max-width: 460px) {
     .details {
+    
+      height: 200px;
       flex-direction: column;
-      .titles {
-        font-size: 13px;
-        p {
-          display: none;
+      justify-content: left;
+
+      padding: 0.5rem;
+      .images {
+
+        .img_product {
+          width: 110px;
+        
+
         }
+      }
+      .price {
+        color: rgb(61, 61, 61);
+        margin: 0 0.3rem 0rem 0rem;
+        font-size: 12px;
+      }
+      .titles {
+        font-size: 10px;
+       .name{
+         display: none;
+       }
+       h3{
+       }
+
+        
+      }
+    }
+  }
+  @media screen and(max-width: 570px) {
+    .details {
+      align-items: flex-start;
+
+      height: 200px;
+      justify-content: center;
+      .images {
+
+        .img_product {
+          width: 110px;
+        
+
+        }
+      }
+      .titles {
+       display: inline-block;
+        font-size: 16px;
+     
+
+        
       }
     }
   }
@@ -19,14 +64,13 @@
     border-bottom: solid 2px rgb(197, 197, 197);
     .details {
       display: flex;
-      align-items: center;
       .images {
         display: flex;
         align-items: center;
         justify-content: center;
 
         .img_product {
-          width: 140px;
+          max-width: 140px;
           height: auto;
           position: relative;
           z-index: 2;
@@ -37,12 +81,17 @@
         }
       }
       .titles {
+        align-self: center;
         margin: 0 1rem 0rem 1rem;
         height: 80px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         justify-content: space-evenly;
+        .name{
+          color: rgb(34, 34, 34);
+
+        }
         .discountBox{
           display: flex;
           align-items: center;
@@ -80,7 +129,8 @@
       .add {
         border: none;
         transition: all 0.1s;
-  
+        color: rgb(23, 173, 73);
+
         &:active {
           color: rgb(28, 138, 28);
           transition: all 0.2s;
@@ -90,7 +140,8 @@
       .minus {
         border: none;
         transition: all 0.1s;
-  
+        color: rgb(218, 69, 69);
+
         &:active {
           color: rgb(218, 69, 69);
           transition: all 0.2s;
@@ -100,11 +151,13 @@
       .deleted {
         border: none;
         transition: all 0.1s;
-  
+        font-size: 25px;
+        color: rgb(218, 69, 69);
+
         &:active {
-          color: rgb(218, 69, 69);
+          color: rgb(223, 21, 21);
           transition: all 0.2s;
-          font-size: large;
+          font-size: medium;
         }
       }
       .quantityCounter {

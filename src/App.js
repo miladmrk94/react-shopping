@@ -15,25 +15,27 @@ import ProductPage from "./Pages/ProductPage";
 
 function App() {
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <Context>
-          <Layout>
-            <Switch>
-              <Route path="/product/:id" component={ProductPage} />
-              <Route path="/checkOut" component={CheckOutPage} />
-              <Route path="/profile" component={ProfilePage} />
-              <Route path="/login" component={LoginPage} />
-              <Route path="/signup" component={SignupPage} />
-              <Route path="/checkOut" component={CheckOutPage} />
-              <Route path="/cart" component={Cart} />
-              <Route path="/" exact={true} component={HomePage} />
-              <Route path="*" component={NotFound404} />
-            </Switch>
-          </Layout>
-        </Context>
-      </AuthProvider>
-    </BrowserRouter>
+    <div className="app">
+      <BrowserRouter>
+        <AuthProvider>
+          <Context>
+            <Layout>
+              <Switch>
+                <Route path="/product/:id" component={ProductPage} />
+                <Route path="/checkOut" component={CheckOutPage} />
+                <Route path="/profile" component={ProfilePage} />
+                <Route path="/login" component={LoginPage} />
+                <Route path="/signup" component={SignupPage} />
+                <Route path="/checkOut" component={CheckOutPage} />
+                <Route path="/cart" component={Cart} />
+                <Route path="/" exact={true} component={HomePage} />
+                <Route path="*" component={NotFound404} />
+              </Switch>
+            </Layout>
+          </Context>
+        </AuthProvider>
+      </BrowserRouter>
+    </div>
   );
 }
 

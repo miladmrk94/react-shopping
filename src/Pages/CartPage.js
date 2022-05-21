@@ -38,31 +38,52 @@ const Cart = () => {
   const cartHandler = (cart) => {
     if (!cart.length) {
       return (
-        <div style={{ marginTop: "5rem", color: "#FE5353" }}>
+        <div
+          style={{ marginTop: "5rem", color: "#FE5353", textAlign: "center" }}
+        >
           <h2>
             Cart is Empty <BiSad />
           </h2>
+          <Link to="/">
+            <h4
+              style={{
+                marginTop: "20px",
+                color: "blueviolet",
+              }}
+            >
+              Go To Home Page
+            </h4>
+          </Link>
         </div>
       );
     } else {
       return (
         <div className={styles.box}>
-          <div className={styles.container}>
-            {/* <header>
-            <div className={styles.headerBox}>
-              <h2 className={styles.cartTitle}>
-                SHOPPING CART:
-                <p className={styles.cartTotal}>{product.length}</p>
-              </h2>
-              <Select
-                className={styles.orderBox}
-                value={value}
-                onChange={handlerChange}
-                options={options}
-              />
-            </div>
-          </header> */}
+          <div className={styles.total}>
+            <div className={styles.totalContinuer}>
+              <div className={styles.totalBox}>
+                <div className={styles.totalDetails}>
+                  <h3>Cart Summery</h3>
+                  <br />
+                  <p>Total Price : {totalPrice} $</p>
+                  <p className={styles.discount}>
+                    Total Discount :{totalPrice - totalOffPrice} $
+                  </p>
+                  <h4>Total Net : {totalOffPrice} $</h4>
 
+                  <div className={styles.boxBtn}>
+                    <Link
+                      to="/signup?redirect=checkOut"
+                      className={styles.link}
+                    >
+                      <button className={styles.btn}>Check Out</button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className={styles.container}>
             {cart.map((item) => {
               return (
                 <Product
@@ -73,18 +94,12 @@ const Cart = () => {
                   discount={item.discount}
                   price={item.price}
                   quantity={item.quantity}
-                  addProduct={() => dispatch({ type: "add", id: item.id })}
-                  minusProduct={() => dispatch({ type: "minus", id: item.id })}
-                  deleteProduct={() =>
-                    dispatch({ type: "delete", id: item.id })
-                  }
+                  addProduct={() => plusHandler(item.id)}
+                  minusProduct={() => minusHandler(item.id)}
+                  deleteProduct={() => deleteHandler(item.id)}
                 />
               );
             })}
-          </div>
-
-          <div className={styles.total}>
-            <Total />
           </div>
         </div>
       );

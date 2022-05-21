@@ -1,6 +1,10 @@
 import React from "react";
 import styles from "../styles/Products.module.scss";
-
+import {
+  RiArrowUpSFill,
+  RiArrowDownSFill,
+  RiDeleteBin2Fill,
+} from "react-icons/ri";
 const Product = ({
   image,
   name,
@@ -19,7 +23,7 @@ const Product = ({
           <img className={styles.img_product} src={image} alt="product" />
         </div>
         <div className={styles.titles}>
-          <h4>{name}</h4>
+          <h4 className={styles.name}>{name}</h4>
           {discount ? (
             <div className={styles.discountBox}>
               <h3 className={styles.priceTwo}>{price} $</h3>
@@ -31,19 +35,21 @@ const Product = ({
 
       <div className={styles.buttons}>
         <div className={styles.price}>
-          <h2>$ {offPrice}</h2>
+          <h2>{offPrice}$</h2>
         </div>
         <div className={styles.quantityCounter}>
           <h4 className={styles.add} onClick={addProduct}>
-            +
+            <RiArrowUpSFill />
           </h4>
           <h4 className={styles.quantity}>{quantity}</h4>
           <h4 className={styles.minus} onClick={minusProduct}>
-            -
+            <RiArrowDownSFill />
           </h4>
         </div>
         <div onClick={deleteProduct} className={styles.deleteProduct}>
-          <h4 className={styles.deleted}>x</h4>
+          <h4 className={styles.deleted}>
+            <RiDeleteBin2Fill />
+          </h4>
         </div>
       </div>
     </div>

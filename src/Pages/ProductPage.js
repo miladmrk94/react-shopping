@@ -41,9 +41,15 @@ const ProductPage = ({ location }) => {
             <div className={styles.content}>
               <div className={styles.boxOne}>
                 <p className={styles.name}>{item.name}</p>
-                <p className={styles.price}>${item.price}</p>
-                <p className={styles.offPrice}>${item.offPrice}</p>
-                <p className={styles.discount}>${item.discount} save!</p>
+                {item.discount ? (
+                  <>
+                    <p className={styles.price}>${item.price}</p>
+                    <p className={styles.offPrice}>${item.offPrice}</p>
+                    <p className={styles.discount}>${item.discount} save!</p>
+                  </>
+                ) : (
+                  <p className={styles.offPriceTwo}>${item.offPrice}</p>
+                )}
               </div>
               {item.type === "shoes" ? (
                 <div className={styles.boxOne}>

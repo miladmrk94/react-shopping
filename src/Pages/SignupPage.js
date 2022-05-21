@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import toast, { Toaster } from "react-hot-toast";
 import { useAuthAction, useAuth } from "../Components/Context/AuthProvider";
 import { useLocation } from "react-router-dom";
+import styles from "../styles/SignupPage.module.scss";
 
 const SignupPage = ({ history }) => {
   console.log(history.location);
@@ -27,7 +28,7 @@ const SignupPage = ({ history }) => {
     email: Yup.string()
       .required("Email is required")
       .email("Invalid email format"),
-    phoneNumber: Yup.string().required("phoneNumber is required"),
+    phoneNumber: Yup.string().required("Phone Number is required"),
     password: Yup.string().required("Password is required"),
     passwordConfirm: Yup.string()
       .required("Password Confirm is required")
@@ -86,85 +87,106 @@ const SignupPage = ({ history }) => {
   }, [redirect, userData]);
 
   return (
-    <div>
-      <form onSubmit={formik.handleSubmit}>
-        <div>
-          <label>Name:</label>
-          <input
-            type="text"
-            name="name"
-            onChange={formik.handleChange}
-            value={formik.values.name}
-            onBlur={formik.handleBlur}
-          />
-          {formik.errors.name && formik.touched.name && (
-            <p>{formik.errors.name}</p>
-          )}
-        </div>
-        <div>
-          <label>Email:</label>
-          <input
-            type="text"
-            name="email"
-            onChange={formik.handleChange}
-            value={formik.values.email}
-            onBlur={formik.handleBlur}
-          />
-          {formik.errors.email && formik.touched.email && (
-            <p>{formik.errors.email}</p>
-          )}
-        </div>
-        <div>
-          <label>phoneNumber:</label>
-          <input
-            type="tel"
-            name="phoneNumber"
-            onChange={formik.handleChange}
-            value={formik.values.phoneNumber}
-            onBlur={formik.handleBlur}
-          />
-          {formik.errors.phoneNumber && formik.touched.phoneNumber && (
-            <p>{formik.errors.phoneNumber}</p>
-          )}
-        </div>
-        <div style={{ marginTop: "20px" }}>
-          <label>Password:</label>
-          <input
-            type="text"
-            name="password"
-            onChange={formik.handleChange}
-            value={formik.values.password}
-            onBlur={formik.handleBlur}
-          />
-          {formik.errors.password && formik.touched.password && (
-            <p>{formik.errors.password}</p>
-          )}
-        </div>
-        <div style={{ marginTop: "20px" }}>
-          <label>passwordConfirm:</label>
-          <input
-            type="text"
-            name="passwordConfirm"
-            onChange={formik.handleChange}
-            value={formik.values.passwordConfirm}
-            onBlur={formik.handleBlur}
-          />
-          {formik.errors.passwordConfirm && formik.touched.passwordConfirm && (
-            <p>{formik.errors.passwordConfirm}</p>
-          )}
-        </div>
-        <button
-          style={{ marginTop: "20px" }}
-          type="submit"
-          disabled={!formik.isValid}
-        >
-          Sign Up
-        </button>
-        <Toaster />
+    <div className={styles.container}>
+      <form onSubmit={formik.handleSubmit} className={styles.form}>
+        <div className={styles.row}>
+          <span>
+            <input
+              className={styles.balloon}
+              id="name"
+              type="text"
+              name="name"
+              onChange={formik.handleChange}
+              value={formik.values.name}
+              onBlur={formik.handleBlur}
+            />
+            <label htmlFor="name">Name</label>
+            {formik.errors.name && formik.touched.name && (
+              <p className={styles.err}>{formik.errors.name}</p>
+            )}
+          </span>
 
-        <Link to={`/login?redirect=${redirect}`}>
-          <p>Already Login ? GO to Login</p>
-        </Link>
+          <span>
+            <input
+              className={styles.balloon}
+              id="email"
+              type="text"
+              name="email"
+              onChange={formik.handleChange}
+              value={formik.values.email}
+              onBlur={formik.handleBlur}
+            />
+            <label htmlFor="email">Email</label>
+            {formik.errors.email && formik.touched.email && (
+              <p className={styles.err}>{formik.errors.email}</p>
+            )}
+          </span>
+          <span>
+            <input
+              className={styles.balloon}
+              id="phoneNumber"
+              type="tel"
+              name="phoneNumber"
+              onChange={formik.handleChange}
+              value={formik.values.phoneNumber}
+              onBlur={formik.handleBlur}
+            />
+            <label htmlFor="phoneNumber">Phone</label>
+            {formik.errors.phoneNumber && formik.touched.phoneNumber && (
+              <p className={styles.err}>{formik.errors.phoneNumber}</p>
+            )}
+          </span>
+          <span>
+            <input
+              className={styles.balloonPassword}
+              id="password"
+              type="text"
+              name="password"
+              onChange={formik.handleChange}
+              value={formik.values.password}
+              onBlur={formik.handleBlur}
+            />
+            <label htmlFor="password">Password</label>
+            {formik.errors.password && formik.touched.password && (
+              <p className={styles.err}>{formik.errors.password}</p>
+            )}
+          </span>
+          <span>
+            <input
+              className={styles.balloonPasswordConfirm}
+              id="passwordConfirm"
+              type="text"
+              name="passwordConfirm"
+              onChange={formik.handleChange}
+              value={formik.values.passwordConfirm}
+              onBlur={formik.handleBlur}
+            />
+            <label htmlFor="passwordConfirm">password Confirm</label>
+            {formik.errors.passwordConfirm &&
+              formik.touched.passwordConfirm && (
+                <p className={styles.err}>{formik.errors.passwordConfirm}</p>
+              )}
+          </span>
+
+          <div className={styles.boxBtn}>
+            <div className={styles.link}>
+              <button
+                className={
+                  !formik.isValid ? `${styles.btn}` : `${styles.btnActive}`
+                }
+                type="submit"
+                disabled={!formik.isValid}
+              >
+                Sign Up
+              </button>
+            </div>
+          </div>
+          <Link to={`/login?redirect=${redirect}`}>
+            <p className={styles.linkSwitch}>You have Acc ? Login</p>
+          </Link>
+        </div>
+
+        <Toaster />
       </form>
     </div>
   );
