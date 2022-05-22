@@ -7,17 +7,16 @@ import toast, { Toaster } from "react-hot-toast";
 import { useAuthAction, useAuth } from "../Components/Context/AuthProvider";
 import { useLocation } from "react-router-dom";
 import styles from "../styles/SignupPage.module.scss";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../Components/firbase-config";
 
 const SignupPage = ({ history }) => {
-  console.log(history.location);
-
   function useQuery() {
     const { search } = useLocation();
 
     return React.useMemo(() => new URLSearchParams(search), [search]);
   }
   const query = useQuery();
-  console.log(query.get("redirect"));
   const redirect = query.get("redirect") || "/";
   const setAuth = useAuthAction();
   const userData = useAuth();
@@ -52,31 +51,58 @@ const SignupPage = ({ history }) => {
         phoneNumber,
         email,
       };
+
+      //---------------for firebase
+
       const postData = async () => {
         try {
-          const { data } = await axios.post(
-            "http://localhost:5000/api/user/register",
-            registerData
+          const { data } = await createUserWithEmailAndPassword(
+            auth,
+            registerData.email,
+            registerData.password,
+            registerData.name,
+            registerData.phoneNumber
           );
-
           console.log(data);
-          setAuth(data);
-          localStorage.setItem("Auth", JSON.stringify(data));
+          setAuth(registerData);
+          localStorage.setItem("Auth", JSON.stringify(registerData));
           history.push(redirect);
         } catch (error) {
-          if (error.response.data.message && error.response) {
-            toast.error(`${error.response.data.message}`, {
-              style: {
-                border: "1px solid #EB5353",
-                padding: "16px",
-                color: "#EB5353",
-                backgroundColor: "#ffeded",
-              },
-            });
-          }
+          console.log(error.message);
         }
       };
       postData();
+      //---------------for localStorage
+      // setAuth(registerData);
+      // localStorage.setItem("Auth", JSON.stringify(registerData));
+      // history.push(redirect);
+
+      //--------------for server
+      // const postData = async () => {
+      //   try {
+      //     const { data } = await axios.post(
+      //       "http://localhost:5000/api/user/register",
+      //       registerData
+      //     );
+
+      //     console.log(data);
+      //     setAuth(data);
+      //     localStorage.setItem("Auth", JSON.stringify(data));
+      //     history.push(redirect);
+      //   } catch (error) {
+      //     if (error.response.data.message && error.response) {
+      //       toast.error(`${error.response.data.message}`, {
+      //         style: {
+      //           border: "1px solid #EB5353",
+      //           padding: "16px",
+      //           color: "#EB5353",
+      //           backgroundColor: "#ffeded",
+      //         },
+      //       });
+      //     }
+      //   }
+      // };
+      // postData();
     },
     validationSchema,
     validateOnMount: true,
@@ -88,8 +114,11 @@ const SignupPage = ({ history }) => {
 
   return (
     <div className={styles.container}>
+      <div className={styles.background} />
+
       <form onSubmit={formik.handleSubmit} className={styles.form}>
         <div className={styles.row}>
+          <h3 style={{ fontSize: "25px", margin: "5px" }}>Sign Up</h3>
           <span>
             <input
               className={styles.balloon}

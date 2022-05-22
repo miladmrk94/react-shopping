@@ -7,6 +7,8 @@ import toast, { Toaster } from "react-hot-toast";
 import { useAuthAction, useAuth } from "../Components/Context/AuthProvider";
 import { useLocation } from "react-router-dom";
 import styles from "../styles/SignupPage.module.scss";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../Components/firbase-config";
 
 const LoginPage = ({ history }) => {
   function useQuery() {
@@ -34,19 +36,20 @@ const LoginPage = ({ history }) => {
       password: "",
     },
     onSubmit: (values) => {
+      //-------------for firebase
+      const { email, password } = values;
+
       const login = async () => {
         try {
-          const { data } = await axios.post(
-            "http://localhost:5000/api/user/login",
-            values
-          );
-          console.log(data);
-          setAuth(data);
-          localStorage.setItem("Auth", JSON.stringify(data));
+          await signInWithEmailAndPassword(auth, email, password);
+          console.log(values);
+          setAuth(values);
+          localStorage.setItem("Auth", JSON.stringify(values));
           history.push(redirect);
         } catch (error) {
-          if (error.response.data.message && error.response) {
-            toast.error(`${error.response.data.message}`, {
+          console.log(error.message);
+          if (error.message && error.message) {
+            toast.error(`${error.message}`, {
               style: {
                 border: "1px solid #EB5353",
                 padding: "16px",
@@ -58,19 +61,49 @@ const LoginPage = ({ history }) => {
         }
       };
       login();
+
+      //------------for server
+      // const login = async () => {
+      //   try {
+      //     const { data } = await axios.post(
+      //       "http://localhost:5000/api/user/login",
+      //       values
+      //     );
+      //     console.log(data);
+      //     setAuth(data);
+      //     localStorage.setItem("Auth", JSON.stringify(data));
+      //     history.push(redirect);
+      //   } catch (error) {
+      //     if (error.response.data.message && error.response) {
+      //       toast.error(`${error.response.data.message}`, {
+      //         style: {
+      //           border: "1px solid #EB5353",
+      //           padding: "16px",
+      //           color: "#EB5353",
+      //           backgroundColor: "#ffeded",
+      //         },
+      //       });
+      //     }
+      //   }
+      // };
+      // login();
     },
     validationSchema,
     validateOnMount: true,
   });
 
-  useEffect(() => {
-    if (userData) history.push(redirect);
-  }, [redirect, userData]);
+  // useEffect(() => {
+  //   if (userData) history.push(redirect);
+  // }, [redirect, userData]);
 
   return (
     <div className={styles.container}>
+      <div className={styles.background} />
+
       <form onSubmit={formik.handleSubmit} className={styles.form}>
         <div className={styles.row}>
+          <h3 style={{ fontSize: "25px", margin: "40px" }}>Login</h3>
+
           <span>
             <input
               className={styles.balloon}

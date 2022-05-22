@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import { useAuth } from "../Context/AuthProvider";
 import { useProduct } from "../Context/Context";
@@ -8,10 +8,12 @@ import {
   RiShoppingCartLine,
   RiUserSharedLine,
   RiUserSettingsLine,
+  RiShutDownLine,
 } from "react-icons/ri";
 
 const Navigation = () => {
   const auth = useAuth();
+  const [user, setUser] = useState(auth);
   const products = useProduct();
   const { cart } = products;
 
@@ -44,7 +46,6 @@ const Navigation = () => {
             <RiShoppingCartLine />
           </NavLink>
         </li>
-
         <li>
           <NavLink
             to={auth ? "/profile" : "/login"}

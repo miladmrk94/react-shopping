@@ -60,42 +60,42 @@ const ProductPage = ({ location }) => {
                     id="37"
                     name="selector"
                   />
-                  <label for="37">37</label>
+                  <label htmlFor="37">37</label>
                   <input
                     className={styles.radio}
                     type="radio"
                     id="38"
                     name="selector"
                   />
-                  <label for="38">38</label>
+                  <label htmlFor="38">38</label>
                   <input
                     className={styles.radio}
                     type="radio"
                     id="39"
                     name="selector"
                   />
-                  <label for="39">39</label>
+                  <label htmlFor="39">39</label>
                   <input
                     className={styles.radio}
                     type="radio"
                     id="40"
                     name="selector"
                   />
-                  <label for="40">40</label>
+                  <label htmlFor="40">40</label>
                   <input
                     className={styles.radio}
                     type="radio"
                     id="41"
                     name="selector"
                   />
-                  <label for="41">41</label>
+                  <label htmlFor="41">41</label>
                   <input
                     className={styles.radio}
                     type="radio"
                     id="42"
                     name="selector"
                   />
-                  <label for="42">42</label>
+                  <label htmlFor="42">42</label>
                 </div>
               ) : (
                 <div className={styles.boxOne}>
@@ -106,21 +106,21 @@ const ProductPage = ({ location }) => {
                     id="S"
                     name="selector"
                   />
-                  <label for="S">S</label>
+                  <label htmlFor="S">S</label>
                   <input
                     className={styles.radio}
                     type="radio"
                     id="M"
                     name="selector"
                   />
-                  <label for="M">M</label>
+                  <label htmlFor="M">M</label>
                   <input
                     className={styles.radio}
                     type="radio"
                     id="L"
                     name="selector"
                   />
-                  <label for="L">L</label>
+                  <label htmlFor="L">L</label>
                 </div>
               )}
 
