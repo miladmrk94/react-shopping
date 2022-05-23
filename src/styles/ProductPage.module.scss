@@ -8,7 +8,6 @@ $fontMini: 1rem;
 $breakpoint: 950px;
 @media (min-width: $breakpoint) {
   .container{
-    width: 100%;
     padding: 0;
     .cart {
       width: 80%;
@@ -52,7 +51,7 @@ $breakpoint-tablet: 450px;
     }
     .content {
       
-      flex: 3 1 100px;
+      flex: 4 1 100px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -108,14 +107,15 @@ $breakpoint-tablet: 450px;
       }
       .boxBtn {
         display: flex;
-        min-width: 370px;
+        min-width: 300px;
         height: 60px;
+        justify-content: left;
         margin-top: 1rem;
         .link {
           width: 40%;
           margin: 0.3rem;
           .btn {
-            width: 100%;
+            width: 90%;
             height: 100%;
             border-radius: 0.3rem;
 
@@ -127,7 +127,7 @@ $breakpoint-tablet: 450px;
         }
 
         .btnInCart {
-          width: 60%;
+          width: 50%;
           margin: 0.3rem;
           border-radius: 0.3rem;
           border: 2px solid #6553f0;
