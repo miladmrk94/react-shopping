@@ -1,44 +1,69 @@
-$layout-breakpoint-small: 1200px;
-
-
-
 $bg: #332f35;
 $fg: lighten($bg, 20%);
 $borderWidth: 3px;
-$font : 2rem;
-$fontMini :1rem;
+$font: 2rem;
+$fontMini: 1rem;
 
+
+$breakpoint: 950px;
+@media (min-width: $breakpoint) {
+  .container{
+    width: 100%;
+    padding: 0;
+    .cart {
+      width: 80%;
+    }
+  }
+ 
+}
+
+
+$breakpoint-tablet: 450px;
+@media (min-width: $breakpoint-tablet) {
+ 
+  .boxOne {
+    font-size: 2rem;
+    padding: 0.2rem;
+  }
+  .content {
+    margin-left: 1rem;
+  }
+}
 
 .container {
   margin: auto;
   display: flex;
   justify-content: center;
   padding-top: 3rem;
+  flex-wrap: wrap;
+  
   .cart {
     display: flex;
     flex-wrap: wrap;
-    width: 70%;
+    max-width:80%;
     .image {
-      flex: 3 1 200px;
+      flex: 2 1 200px;
       aspect-ratio: 1/1;
       display: flex;
       align-items: flex-start;
       justify-content: right;
+      justify-content: left;
+
     }
     .content {
+      
       flex: 3 1 100px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       width: 100%;
-      margin-left: 5rem;
+     
       .boxOne {
         text-align: left;
         border-bottom: 1px solid rgb(197, 197, 197);
         width: 100%;
         padding: 1rem 0;
-        font-size: 2rem;
-        
+
         h2,
         label {
           font-size: 1.3rem;
@@ -83,7 +108,7 @@ $fontMini :1rem;
       }
       .boxBtn {
         display: flex;
-        width: 100%;
+        min-width: 370px;
         height: 60px;
         margin-top: 1rem;
         .link {

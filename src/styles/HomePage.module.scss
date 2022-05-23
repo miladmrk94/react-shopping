@@ -3,7 +3,7 @@
 .home {
   background-color: rgb(235, 240, 243);
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 
@@ -17,6 +17,7 @@
   max-width: 1170px;
   width: 70vw;
   .product {
+    max-width: 90%;
     border-radius: 0.3rem;
     text-align: center;
     border: 1px solid rgb(65, 65, 65);

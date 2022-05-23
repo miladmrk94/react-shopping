@@ -6,21 +6,15 @@
   .form {
     margin-top: 3rem;
     width: 70%;
-    background: #303030;
-    border-radius: 0.3rem;
-    background: rgba(255, 255, 255, 0.1);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+  
 
-    border: 2px solid #313131;
+   
     .row {
       border-radius: 0.3rem;
       max-width: 800px;
       margin: 0 auto;
       padding: 60px 30px;
-      background: rgba(22, 23, 24, 0.205);
-      -webkit-backdrop-filter: blur(10px);
-      backdrop-filter: blur(10px);
+    
 
       text-align: center;
     }
@@ -38,7 +32,7 @@ table.GeneratedTable {
     width: 100%;
     background-color: #ffffff;
   border-collapse: separate;
-    border-width: 2px;
+    border-width: 6px;
     border-color: #363636;
     border-style: solid;
     color: #000000;

@@ -38,7 +38,7 @@ const Navigation = () => {
       <ul>
         <li>
           <NavLink to="/" activeClassName={styles.active} exact={true}>
-            <RiHomeSmileLine />
+            <RiHomeSmileLine className={styles.line} />
           </NavLink>
         </li>
         <li>

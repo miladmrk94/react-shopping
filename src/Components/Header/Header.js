@@ -15,7 +15,7 @@ const Header = () => {
   return (
     <header className={styles.headerBox}>
       <div className={styles.image}>
-        <img src="https://s6.uupload.ir/files/logo_43g2.png" alt="logo" />
+        <img src="https://s6.uupload.ir/files/logo_kgop.png" alt="logo" />
         {auth && (
           <div className={styles.logout} onClick={logoutHandler}>
             <Link to="/" className={styles.logout}>

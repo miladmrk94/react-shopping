@@ -59,13 +59,11 @@ const SignupPage = ({ history }) => {
           const { data } = await createUserWithEmailAndPassword(
             auth,
             registerData.email,
-            registerData.password,
-            registerData.name,
-            registerData.phoneNumber
+            registerData.password
           );
           console.log(data);
           setAuth(registerData);
-          localStorage.setItem("Auth", JSON.stringify(registerData));
+          localStorage.setItem("Auth", JSON.stringify(values));
           history.push(redirect);
         } catch (error) {
           console.log(error.message);

@@ -4,6 +4,7 @@ import styles from "../styles/HomePage.module.scss";
 import { useProductAction, useProduct } from "../Components/Context/Context";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const HomePage = () => {
   const dispatch = useProductAction();
@@ -25,12 +26,15 @@ const HomePage = () => {
           return (
             <section key={item.name} className={styles.product}>
               <Link to={{ pathname: `/product/${item.name}`, state: { item } }}>
-                <div className={styles.productImage}>
+                <motion.div
+                  whileTap={{ scale: 0.9 }}
+                  className={styles.productImage}
+                >
                   <img src={item.image} alt={item.name} />
                   <div className={styles.name}>
                     <p>{item.name}</p>
                   </div>
-                </div>
+                </motion.div>
               </Link>
             </section>
           );
