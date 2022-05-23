@@ -1,7 +1,7 @@
 
 # React Shop
 
-[mrk-shop](https://mrk-shop.onrender.com/)
+[mrk-shop.onrender.com](https://mrk-shop.onrender.com/)
 
 
 #### درصورت اجرا نشدن برنامه از vpn استفاده کنید 
