@@ -1,4 +1,8 @@
+
 # React Shop
+
+[mrk-shop](https://choosealicense.com/licenses/mit/)
+
 
 #### درصورت اجرا نشدن برنامه از vpn استفاده کنید 
 ##### احراز هویت با فایبربیس پیاده سازی شده و نیاز به vpn دارد 
