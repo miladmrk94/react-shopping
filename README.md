@@ -8,12 +8,11 @@
 ##### احراز هویت با فایبربیس پیاده سازی شده و نیاز به vpn دارد 
 
 * Functional programming
-
+* Use React-Redux
 * Switch between pages without reloading (SPA)
-
 * Each product has its own link
 * Use the library ( react-router-dom )
-* Sstate Management with ( Context ) 
+* Sstate Management with ( Context & Redux) 
 * Handle product discounts
 * Add products to cart
 * Shopping Cart Development
@@ -24,10 +23,11 @@
 * responsive
 ---------------
 * برنامه نویسی تابعی
+* استفاده از Redux
 * جابجایی بین صفحهات بدون بارگزاری مجدد (SPA)
 * هر محصول لینک مخصوص به خودش را دارد
 * استفاده از کتابخانه react-router-dom
-* مدیریت state با Context و Reducer
+* مدیریت state با Context و Redux
 * هندل کردن تخفیف محصولات
 * اضافه کردن محصولات به سبد خرید
 * توسعه سبد خرید
