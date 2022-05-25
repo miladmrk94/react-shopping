@@ -5,38 +5,53 @@ import Product from "../Components/Product";
 import styles from "../styles/CartPage.module.scss";
 import { BiSad } from "react-icons/bi";
 import Total from "../Components/Total";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  deleteProduct,
+  minusProduct,
+  plusProduct,
+} from "../Redux/product/productAction";
 
 const Cart = () => {
-  const products = useProduct();
-  const dispatch = useProductAction();
-  const { cart } = products;
-  console.log(cart);
+  //-----context
+  // const products = useProduct();
+  // const dispatch = useProductAction();
+  // const { cart } = products;
+  // console.log(cart);
+
+  //-----redux
+  const products = useSelector((state) => state.cart);
+  console.log(products);
+  const dispatch = useDispatch();
 
   // ----- product Btn handler
   const plusHandler = (id) => {
-    dispatch({ type: "plusProduct", id: id });
+    // dispatch({ type: "plusProduct", id: id });
+    dispatch(plusProduct(id));
   };
   const minusHandler = (id) => {
-    dispatch({ type: "minusProduct", id: id });
+    // dispatch({ type: "minusProduct", id: id });
+    dispatch(minusProduct(id));
   };
 
   const deleteHandler = (id) => {
-    dispatch({ type: "deleteProduct", id: id });
+    // dispatch({ type: "deleteProduct", id: id });
+    dispatch(deleteProduct(id));
   };
 
   //----- handel total price and offPrice
-  const totalPrice = cart.reduce((total, item) => {
+  const totalPrice = products.reduce((total, item) => {
     const price = item.price * item.quantity;
     return total + price;
   }, 0);
-  const totalOffPrice = cart.reduce((total, item) => {
+  const totalOffPrice = products.reduce((total, item) => {
     const price = item.offPrice * item.quantity;
     return total + price;
   }, 0);
 
   // ----- handle cart ( Empty or Exist)
-  const cartHandler = (cart) => {
-    if (!cart.length) {
+  const cartHandler = (products) => {
+    if (!products.length) {
       return (
         <div
           style={{ marginTop: "5rem", color: "#FE5353", textAlign: "center" }}
@@ -84,7 +99,7 @@ const Cart = () => {
             </div>
           </div>
           <div className={styles.container}>
-            {cart.map((item) => {
+            {products.map((item) => {
               return (
                 <Product
                   key={item.id}
@@ -177,7 +192,7 @@ const Cart = () => {
   };
 
   //----- Main return Component CartPage
-  return cartHandler(cart);
+  return cartHandler(products);
 };
 
 export default Cart;

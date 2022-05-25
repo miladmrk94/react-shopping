@@ -1,0 +1,7 @@
+export const GET_PRODUCT = "GET_PRODUCT";
+
+export const PLUS_PRODUCT = "PLUS_PRODUCT";
+
+export const MINUS_PRODUCT = "MINUS_PRODUCT";
+
+export const DELETE_PRODUCT = "DELETE_PRODUCT";

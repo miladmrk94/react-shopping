@@ -4,10 +4,18 @@ import { useProductAction, useProduct } from "./../Components/Context/Context";
 import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import Slider from "../Components/Slider";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { getProduct } from "../Redux/product/productAction";
 
 const ProductPage = ({ location }) => {
-  const dispatch = useProductAction();
-  const { cart } = useProduct();
+  //---- Context
+  // const dispatch = useProductAction();
+  // const { cart } = useProduct();
+
+  //----- Redux
+  const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
 
   const checkInCart = (cart, products) => {
     return cart.find((i) => {
@@ -15,7 +23,9 @@ const ProductPage = ({ location }) => {
     });
   };
   const clickHandler = (item) => {
-    dispatch({ type: "getProduct", payload: item });
+    // dispatch({ type: "getProduct", payload: item });
+    dispatch(getProduct(item));
+
     toast.success(item.name, {
       position: "top-center",
       autoClose: 300,

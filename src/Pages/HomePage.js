@@ -5,10 +5,17 @@ import { useProductAction, useProduct } from "../Components/Context/Context";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import { getProduct } from "../Redux/product/productAction";
 
 const HomePage = () => {
-  const dispatch = useProductAction();
-  const { cart } = useProduct();
+  //----- Context
+  // const dispatch = useProductAction();
+  // const { cart } = useProduct();
+
+  //-----Redux
+  const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
 
   const checkInCart = (cart, products) => {
     return cart.find((i) => {
@@ -16,7 +23,8 @@ const HomePage = () => {
     });
   };
   const clickHandler = (item) => {
-    dispatch({ type: "getProduct", payload: item });
+    // dispatch({ type: "getProduct", payload: item });
+    dispatch(getProduct(item));
   };
 
   return (

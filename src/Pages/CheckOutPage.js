@@ -2,10 +2,15 @@ import React from "react";
 import styles from "../styles/CheckOutPage.js.module.scss";
 import moment from "moment";
 import { useProduct } from "../Components/Context/Context";
+import { useSelector } from "react-redux";
 const CheckOutPage = () => {
-  const products = useProduct();
-  const { cart } = products;
-  console.log(cart);
+  //-----context
+  // const products = useProduct();
+  // const { cart } = products;
+  // console.log(cart);
+
+  //-----redux
+  const cart = useSelector((state) => state.cart);
 
   const totalOffPrice = cart.reduce((total, item) => {
     const price = item.offPrice * item.quantity;
@@ -26,7 +31,7 @@ const CheckOutPage = () => {
           <tbody>
             {cart.map((i) => {
               return (
-                <tr>
+                <tr key={i.id}>
                   <td>{i.offPrice}$</td>
                   <td>{i.quantity}</td>
                   <td>{i.name}</td>

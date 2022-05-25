@@ -10,14 +10,20 @@ import {
   RiUserSettingsLine,
   RiShutDownLine,
 } from "react-icons/ri";
+import { useDispatch, useSelector } from "react-redux";
 
 const Navigation = () => {
   const auth = useAuth();
   const [user, setUser] = useState(auth);
-  const products = useProduct();
-  const { cart } = products;
 
-  let bajColor = cart.reduce((total, item) => {
+  //----- context
+  // const products = useProduct();
+  // const { cart } = products;
+
+  //-----redux
+  const products = useSelector((state) => state.cart);
+
+  let bajColor = products.reduce((total, item) => {
     return total + item.quantity;
   }, null);
 
